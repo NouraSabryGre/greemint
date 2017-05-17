@@ -22,5 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/user/{id}', function () {
-  echo "hello";
+  return view('profile');
 });
