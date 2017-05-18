@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Doctor extends Model
+class Doctor extends User
 {
-    //
 
+
+    protected $table = 'doctors';
 
     /**
     * Get the uer record associated with the doctor.
