@@ -63,12 +63,24 @@ class UserController extends Controller
           'profilepic' => "usersprofilepicture.jpg"
          );
       // family members list
+      $familymembers = $user->family;
+      $familyList = array();
+      for ($i = 0 ; $i < count($familymembers) ; $i++) {
+        $familyList[$i] = array(
+          'id' =>$familymembers[$i]->id ,
+          'name' =>$familymembers[$i]->name ,
+          'profilepic' => "family" . ($i+1) . ".jpg"
+        );
+      }
       // All portfolios
+
+      // dd($familyList);
 
 
 
 
       $passedData['user'] = $userArray;
+      $passedData['family'] = $familyList;
 
       // dd($passedData);
 

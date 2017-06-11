@@ -25,9 +25,12 @@
         <div class="card" style="width: 20rem;">
         <h3 class="card-header">Family Members</h3>
         <div class="card-block text-center">
-          <img class="circle" style="max-width:30%;" src="/images/family1.jpg" alt="">
-          <img class="circle" style="max-width:30%;" src="/images/family2.jpg" alt="">
-          <img class="circle" style="max-width:30%;" src="/images/family3.jpg" alt="">
+          @foreach($family as $familymember)
+            <a href="/view/user/{{$familymember['id']}}">
+              <img class="circle" style="max-width:30%;" src="/images/{{$familymember['profilepic']}}" alt="">
+            </a>
+          @endforeach
+
         </div>
         <div class="card-block text-center">
           <a href="/view/familymembers" class="card-link">View All</a>
