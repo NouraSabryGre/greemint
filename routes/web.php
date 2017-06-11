@@ -18,9 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 
-Route::get('/user/{id}', function () {
-  return view('profile');
-});
+Route::get('/user/{id}', 'UserController@show');
 
 Route::get('/schedule', function () {
   return view('schedule');

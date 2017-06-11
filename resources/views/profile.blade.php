@@ -15,8 +15,8 @@
 
 @section('sidebar')
   @include('sidebars.userprofile')
-
 @endsection
+
 
 @section('content')
   <div class="col">
