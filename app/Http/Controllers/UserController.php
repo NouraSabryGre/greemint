@@ -64,17 +64,9 @@ class UserController extends Controller
          );
       // family members list
       $familymembers = $user->family;
-      $familyList = array();
-      for ($i = 0 ; $i < count($familymembers) ; $i++) {
-        $familyList[$i] = array(
-          'id' =>$familymembers[$i]->id ,
-          'name' =>$familymembers[$i]->name ,
-          'profilepic' => "family" . ($i+1) . ".jpg"
-        );
-      }
+      $familyList = $this->familyList($user);
       // All portfolios
 
-      // dd($familyList);
 
 
 
@@ -86,6 +78,20 @@ class UserController extends Controller
 
         return view('profile' , $passedData);
     }
+
+    private function familyList(User $user) {
+      $familymembers = $user->family;
+      $familyList = array();
+      for ($i = 0 ; $i < count($familymembers) ; $i++) {
+        $familyList[$i] = array(
+          'id' =>$familymembers[$i]->id ,
+          'name' =>$familymembers[$i]->name ,
+          'profilepic' => "family" . ($i+1) . ".jpg"
+        );
+      }
+      return $familyList;
+    }
+
 
     /**
      * Show the form for editing the specified resource.
