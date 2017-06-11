@@ -5,112 +5,16 @@
 @section('title', 'Home')
 
 
-@section('customcss')
-    <style media="screen">
-      .circle {
-        border-radius: 100%;
-        display: inline-block;
-        vertical-align: middle;
-      }
-    </style>
-@endsection
+
 
 
 @section('navigation')
-  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="#">
-      <img src="images/logo.png" width="100" height="75" class="d-inline-block align-top py-1" alt="">
-    </a>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <!-- <div class="justify-content-center"> -->
-
-      <!-- </div> -->
-      <!-- <div class="justify-content-end"> -->
-        <ul class="navbar-nav ">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="schedule.html">Schedule</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Donations</a>
-          </li>
-
-        </ul>
-      <!-- </div> -->
-      <button type="button" class="btn btn-outline-warning example-popover " data-toggle="popover"
-      data-placement="bottom"
-      data-html="true"
-      title="Recent"
-      data-content='
-        <div class="list-group"">
-
-          <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in Dapibus ac facilisis in</a>
-          <a href="#" class="list-group-item list-group-item-action">Morbi leo risus Morbi leo risus</a>
-          <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac Porta ac consectetur ac</a>
-
-        </div>
-
-        <div class="text-center mt-1">
-         <a href="#" class="btn-link">View All</a>
-       </div">
-      '>
-        Notification
-      </button>
-
-      <form action="search.html" class="form-inline my-2 my-lg-0 justify-content-center">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-
-
-    </div>
-  </nav>
-
+   @include('layouts.nav')
 @endsection
 
 
 @section('sidebar')
-  <div class="container">
-    <div class="row">
-      <div class="col-4">
-        <div class="row">
-          <div class="card" style="width: 20rem;">
-            <img class="card-img-top mx-auto mt-2 d-block rounded " style="max-width:50%;" src="images/profilepicture.jpg" alt="Card image cap">
-            <div class="card-block" id="profileImage">
-              <h4 class="card-title text-center">Mostafa Akram</h4>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-            <div class="card-block text-center">
-              <a href="#" class="card-link btn btn-outline-primary">Edit</a><br>
-              <a href="#" class="card-link btn btn-outline-primary mt-2">Account Settings</a>
-            </div>
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="card" style="width: 20rem;">
-          <h3 class="card-header">Family Members</h3>
-          <div class="card-block text-center">
-            <img class="circle" style="max-width:30%;" src="images/profilepicture.jpg" alt="">
-            <img class="circle" style="max-width:30%;" src="images/profilepicture.jpg" alt="">
-            <img class="circle" style="max-width:30%;" src="images/profilepicture.jpg" alt="">
-          </div>
-          <div class="card-block text-center">
-            <a href="viewfamily.html" class="card-link">View All</a>
-
-          </div>
-        </div>
-        </div>
-      </div>
+  @include('sidebars.userprofile')
 
 @endsection
 
@@ -214,26 +118,7 @@
       </div>
     </div>
     <!-- End Of Feed -->
-
-
-
   </div>
-  </div>
-  </div>
-@endsection
 
 
-
-
-
-
-
-@section('customjs')
-  <script type="text/javascript">
-    $(function () {
-      $('.example-popover').popover({
-        container: 'body'
-      })
-      })
-  </script>
 @endsection

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-  return view('guest.index');
+  return redirect('/user/2');
 });
 
 Auth::routes();
@@ -20,4 +20,39 @@ Auth::routes();
 
 Route::get('/user/{id}', function () {
   return view('profile');
+});
+
+Route::get('/schedule', function () {
+  return view('schedule');
+});
+
+
+Route::get('/donations', function () {
+  return view('donations');
+});
+
+
+Route::get('/find', function(){
+  return view('search');
+});
+
+
+// VIEW
+
+Route::get('view/familymembers', function() {
+  return view('view.family');
+});
+
+Route::get('view/user/{id}', function() {
+  return view('view.user');
+});
+
+
+Route::get('view/doctor/{id}', function() {
+  return view('view.doctor');
+});
+
+
+Route::get('view/place/{id}', function() {
+  return view('view.place');
 });
