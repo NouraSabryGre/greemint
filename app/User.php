@@ -42,4 +42,14 @@ class User extends Authenticatable
     {
       return $this->belongsToMany('App\User', 'family_user', 'user_id', 'family_id');
     }
+
+
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function portfolios()
+    {
+        return $this->hasMany('App\Portfolio');
+    }
 }

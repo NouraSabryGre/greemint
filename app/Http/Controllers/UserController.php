@@ -66,6 +66,8 @@ class UserController extends Controller
       $familymembers = $user->family;
       $familyList = $this->familyList($user);
       // All portfolios
+      $portfolios = $user->portfolios;
+
 
 
 
@@ -73,8 +75,8 @@ class UserController extends Controller
 
       $passedData['user'] = $userArray;
       $passedData['family'] = $familyList;
+      $passedData['portfolios'] = $portfolios;
 
-      // dd($passedData);
 
         return view('profile' , $passedData);
     }

@@ -20,26 +20,27 @@
 
 @section('content')
   <div class="col">
-    <div class="row mx-2 mt-2" >
+    <div class="row mx-2 " >
       <!-- A Feed -->
-      <div class="card" style="width:100%">
-        <h3 class="card-header">Doctor Ahmed Maghraby</h3>
-        <div class="d-inline-block text-right text-info mr-1 mt-1">
-          29/2/2013
-        </div>
-        <div class="card-block">
-          <h4 class="card-title">Special title treatment</h4>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <div class="text-right">
-            <!-- <a href="#" class="btn btn-link btn-sm" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Comments</a> -->
-
-            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-              Comments
-            </button>
-            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Prescription</a>
+      @foreach($portfolios as $portfolio)
+        <div class="card mt-2" style="width:100%">
+          <h3 class="card-header">{{ $portfolio->doctor->user->name }}</h3>
+          <div class="d-inline-block text-right text-info mr-1 mt-1">
+            {{ $portfolio->report->created_at }}
+          </div>
+          <div class="card-block">
+            <h4 class="card-title">{{ $portfolio->report->title }}</h4>
+            <p class="card-text">{{ $portfolio->report->body }}</p>
+            <div class="text-right">
+              
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Comments
+              </button>
+              <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Prescription</a>
+            </div>
           </div>
         </div>
-      </div>
+        @endforeach
 
       <!-- The comments collapse  -->
 
