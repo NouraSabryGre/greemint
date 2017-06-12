@@ -23,4 +23,13 @@ class Portfolio extends Model
     {
         return $this->belongsTo('App\Doctor');
     }
+
+
+    /**
+     * Get the comments for the report post.
+     */
+    public function comments()
+    {
+        return $this->report->hasMany('App\Comment');
+    }
 }

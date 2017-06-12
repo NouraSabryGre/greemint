@@ -42,7 +42,6 @@ $factory->define(App\Report::class, function (Faker\Generator $faker) {
     ];
 });
 
-
 $factory->define(App\Portfolio::class, function (Faker\Generator $faker) {
 
     return [
@@ -52,6 +51,14 @@ $factory->define(App\Portfolio::class, function (Faker\Generator $faker) {
       'prescription_id' => rand(1,20),
     ];
 
+});
 
+
+$factory->define(App\Comment::class, function (Faker\Generator $faker) {
+
+    return [
+      'report_id' => rand(1,20),
+      'body'=> $faker->realText(100,1),
+    ];
 
 });

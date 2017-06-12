@@ -32,37 +32,42 @@
             <h4 class="card-title">{{ $portfolio->report->title }}</h4>
             <p class="card-text">{{ $portfolio->report->body }}</p>
             <div class="text-right">
-              
-              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#comments{{ $portfolio->report->id }}" aria-expanded="false" aria-controls="comments{{ $portfolio->report->id }}">
                 Comments
               </button>
               <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Prescription</a>
             </div>
           </div>
         </div>
+
+
+          <!-- The comments collapse  -->
+
+          <div class="collapse" id="comments{{ $portfolio->report->id }}" style="width:100%;border-top: 0px;">
+            <div class="card ">
+                <ul class="list-group list-group-flush">
+                  @foreach ($portfolio->comments as $comment)
+                    <li class="list-group-item">{{ $comment->body }}</li>
+                  @endforeach
+                  <li class="list-group-item">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Write Your Comment">
+                      <span class="input-group-btn">
+                        <button class="btn btn-outline-primary" type="button">Send</button>
+                      </span>
+                    </div>
+                  </li>
+
+                </ul>
+
+            </div>
+          </div>
+
+
+
         @endforeach
 
-      <!-- The comments collapse  -->
-
-      <div class="collapse" id="collapseExample" style="width:100%;border-top: 0px;">
-        <div class="card ">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-              <li class="list-group-item">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Write Your Comment">
-                  <span class="input-group-btn">
-                    <button class="btn btn-outline-primary" type="button">Send</button>
-                  </span>
-                </div>
-              </li>
-
-            </ul>
-
-        </div>
-      </div>
 
       <!-- Modal -->
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
