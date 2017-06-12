@@ -14,7 +14,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
-    
+
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
@@ -31,4 +31,27 @@ $factory->define(App\Doctor::class, function (Faker\Generator $faker) {
     return [
         'user_id' =>factory(App\User::class)->create()->id,
     ];
+});
+
+$factory->define(App\Report::class, function (Faker\Generator $faker) {
+
+    return [
+      'title' => $faker->realText(30,1),
+      'body' => $faker->realText(200,2),
+
+    ];
+});
+
+
+$factory->define(App\Portfolio::class, function (Faker\Generator $faker) {
+
+    return [
+      'user_id' => rand(1,3),
+      'doctor_id' => rand(1,2),
+      'report_id' => rand(1,20),
+      'prescription_id' => rand(1,20),
+    ];
+
+
+
 });
