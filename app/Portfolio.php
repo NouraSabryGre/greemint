@@ -19,6 +19,14 @@ class Portfolio extends Model
         return $this->belongsTo('App\Report');
     }
 
+    /**
+      * Get the prescription record associated with the portfolio.
+      */
+     public function prescription()
+     {
+         return $this->belongsTo('App\Prescription');
+     }
+
     public function doctor()
     {
         return $this->belongsTo('App\Doctor');
