@@ -10,7 +10,7 @@
           </div>
           <ul class="list-group list-group-flush">
             @foreach($user as $key => $value)
-              @if ($key != "Name" || $key != "profilepic")
+              @if ($key != "Name" && $key != "profilepic")
                 <li class="list-group-item">{{$key}}: {{$value}}</li>
               @endif
             @endforeach
