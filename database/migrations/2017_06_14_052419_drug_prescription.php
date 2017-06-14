@@ -17,6 +17,8 @@ class DrugPrescription extends Migration
             $table->increments('id');
             $table->integer('drug_id');
             $table->integer('prescription_id');
+            $table->integer("repeat");
+            $table->date("end_date");
             $table->timestamps();
         });
     }

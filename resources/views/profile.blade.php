@@ -99,8 +99,8 @@
                     <tr>
                       <th scope="row">1</th>
                       <td>{{ $drug->name }}</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
+                      <td>{{ $drug->pivot->repeat }}</td>
+                      <td>@ {{ $drug->pivot->end_date }}</td>
                     </tr>
                   @endforeach
 

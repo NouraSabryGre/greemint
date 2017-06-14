@@ -11,6 +11,6 @@ class Prescription extends Model implements DoctorWritable
    */
   public function drugs()
   {
-      return $this->belongsToMany('App\Drug');
+      return $this->belongsToMany('App\Drug')->withPivot('repeat', 'end_date');
   }
 }
