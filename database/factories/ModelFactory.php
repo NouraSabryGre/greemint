@@ -41,6 +41,14 @@ $factory->define(App\Report::class, function (Faker\Generator $faker) {
 
     ];
 });
+$factory->define(App\Prescription::class, function (Faker\Generator $faker) {
+
+    return [
+      
+    ];
+
+});
+
 
 $factory->define(App\Portfolio::class, function (Faker\Generator $faker) {
 
