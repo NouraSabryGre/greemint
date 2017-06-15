@@ -52,4 +52,33 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Portfolio');
     }
+
+
+
+
+
+    public function userInfoArray() {
+      $userArray  = array(
+        'Name' => $this->name ,
+        'Age' => $this->age ,
+        'Mobile' => $this->mobile ,
+        'Email' => $this->email ,
+        'profilepic' => "usersprofilepicture.jpg"
+       );
+       return $userArray;
+    }
+
+    public function familyInfoArray() {
+      $familymembers = $this->family;
+      $familyList = array();
+      for ($i = 0 ; $i < count($familymembers) ; $i++) {
+        $familyList[$i] = array(
+          'id' =>$familymembers[$i]->id ,
+          'name' =>$familymembers[$i]->name ,
+          'profilepic' => "family" . ($i+1) . ".jpg"
+        );
+      }
+      return $familyList;
+    }
+
 }

@@ -55,16 +55,10 @@ class UserController extends Controller
         // mobile
         // profile pic
 
-        $userArray  = array(
-          'Name' => $user->name ,
-          'Age' => $user->age ,
-          'Mobile' => $user->mobile ,
-          'Email' => $user->email ,
-          'profilepic' => "usersprofilepicture.jpg"
-         );
+      $userArray  = $user->userInfoArray();
       // family members list
-      $familymembers = $user->family;
-      $familyList = $this->familyList($user);
+      $familyList = $user->familyInfoArray();
+
       // All portfolios
       $portfolios = $user->portfolios;
 
@@ -81,18 +75,7 @@ class UserController extends Controller
         return view('profile' , $passedData);
     }
 
-    private function familyList(User $user) {
-      $familymembers = $user->family;
-      $familyList = array();
-      for ($i = 0 ; $i < count($familymembers) ; $i++) {
-        $familyList[$i] = array(
-          'id' =>$familymembers[$i]->id ,
-          'name' =>$familymembers[$i]->name ,
-          'profilepic' => "family" . ($i+1) . ".jpg"
-        );
-      }
-      return $familyList;
-    }
+
 
 
     /**
