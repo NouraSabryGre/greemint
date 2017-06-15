@@ -44,7 +44,7 @@ $factory->define(App\Report::class, function (Faker\Generator $faker) {
 $factory->define(App\Prescription::class, function (Faker\Generator $faker) {
 
     return [
-      
+
     ];
 
 });
@@ -70,11 +70,35 @@ $factory->define(App\Comment::class, function (Faker\Generator $faker) {
     ];
 
 });
+
 $factory->define(App\Drug::class, function (Faker\Generator $faker) {
 
     return [
       'name' => $faker->word,
       'description'=> $faker->realText(100,1),
+    ];
+
+});
+
+
+$factory->define(App\Schedule::class, function (Faker\Generator $faker) {
+    $typeId  = rand(1,2);
+    $type = "";
+    $title =" ";
+    if ($typeId == 1) {
+      $type = "appointment";
+      $title = $faker->realText(30,1);
+    }else {
+      $type = "drug";
+      $title = $faker->word;
+
+    }
+
+    return [
+      'user_id' => rand(1,10),
+      'type' => $type,
+      'title' => $title,
+      'date' => $faker->date()
     ];
 
 });
