@@ -114,7 +114,16 @@ $factory->define(App\Place::class, function (Faker\Generator $faker) {
       'email' => $faker->email,
       'website' => $faker->domainName,
       'rate' => mt_rand (0*10, 10*10) / 10,
-      
+
+    ];
+
+});
+
+
+$factory->define(App\Hospital::class, function (Faker\Generator $faker) {
+
+    return [
+      'place_id' => rand(1,10)
     ];
 
 });
