@@ -28,9 +28,7 @@ Route::get('/donations', function () {
 });
 
 
-Route::get('/find', function(){
-  return view('search');
-});
+Route::get('/find', 'SearchController@index');
 
 
 // VIEW

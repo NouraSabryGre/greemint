@@ -55,10 +55,12 @@
           <hr>
 
           <div class="list-group">
-
-            <a href="/view/doctor/2" class="list-group-item list-group-item-action">Dr Ahmed Maghraby</a>
-            <a href="/view/place/2" class="list-group-item list-group-item-action">El Nozha Hospital</a>
-            <a href="#" class="list-group-item list-group-item-action">El Ezaby Pharmacy</a>
+            @foreach($searchResult['doctors'] as $doctor)
+              <a href="/view/doctor/{{$doctor->id}}" class="list-group-item list-group-item-action">{{ $doctor->user->name }}</a>
+            @endforeach
+            @foreach($searchResult['places'] as $place)
+              <a href="/view/place/{{$place->place->id}}" class="list-group-item list-group-item-action">{{ $place->place->name }}</a>
+            @endforeach
 
           </div>
 
