@@ -34,26 +34,20 @@
             </tr>
           </thead>
           <tbody>
-
+            @foreach($schedule as $item)
               <tr>
-                <th scope="row">1</th>
-                <td><span class="badge badge-pill badge-default">Drug</span></td>
-                <td>Otto</td>
-                <td>@Today, 2:30PM</td>
+                <th scope="row">{{ $item->id }}</th>
+                @if ($item->type == 'drug')
+                  <td><span class="badge badge-pill badge-default">Drug</span></td>
+                @else
+                  <td><span class="badge badge-pill badge-primary">Appointment</span></td>
+                @endif
+                <td>{{$item->title}}</td>
+                <td>@ {{ $item->date }}</td>
               </tr>
+            @endforeach
 
-            <tr>
-              <th scope="row">2</th>
-              <td><a href="#"><span class="badge badge-pill badge-primary">Appointment</span></a></td>
-              <td>Dr Ahmed Maghraby</td>
-              <td>@January 17, 8:00AM</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td><span class="badge badge-pill badge-default">Drug</span></td>
-              <td>the Bird</td>
-              <td>@Tomorrow, 3:30PM</td>
-            </tr>
+
           </tbody>
         </table>
 

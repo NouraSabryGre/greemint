@@ -20,9 +20,7 @@ Auth::routes();
 
 Route::get('/user/{id}', 'UserController@show');
 
-Route::get('/schedule', function () {
-  return view('schedule');
-});
+Route::get('/schedule', 'ScheduleController@index');
 
 
 Route::get('/donations', function () {
