@@ -127,3 +127,11 @@ $factory->define(App\Hospital::class, function (Faker\Generator $faker) {
     ];
 
 });
+
+$factory->define(App\Clinic::class, function (Faker\Generator $faker) {
+
+    return [
+      'place_id' => rand(1,10)
+    ];
+
+});
