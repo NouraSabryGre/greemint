@@ -14,7 +14,7 @@
 
 
 @section('sidebar')
-  @include('layouts.usersSideBar')
+  @include('sidebars.userprofile')
 
 @endsection
 
@@ -26,34 +26,20 @@
         <h4 class="card-title">Your Family Members</h4>
 
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <div class="d-inline-block mr-2" style="width:30%;">
-              <img src="/images/family1.jpg" alt="..." class="img-thumbnail rounded" style="max-width:80%;">
-            </div>
-            <div class="d-inline-block">
-                <a href="/view/user/2" class="btn btn-link">
-                  <h5 > Name <span class="badge badge-info">2nd</span> </h5>
-                </a>
+          @foreach ($family as $member)
+            <li class="list-group-item">
+              <div class="d-inline-block mr-2" style="width:30%;">
+                <img src="/images/{{ $member['profilepic'] }}" alt="..." class="img-thumbnail rounded" style="max-width:80%;">
+              </div>
+              <div class="d-inline-block">
+                  <a href="/view/user/{{$member['id']}}" class="btn btn-link">
+                    <h5 > {{ $member['name']}} <span class="badge badge-info">2nd</span> </h5>
+                  </a>
 
-            </div>
-          </li>
-          <li class="list-group-item">
-            <div class="d-inline-block mr-2" style="width:30%;">
-              <img src="/images/family1.jpg" alt="..." class="img-thumbnail rounded" style="max-width:80%;">
-            </div>
-            <div class="d-inline-block">
-                <h5> Name <span class="badge badge-info">3rd</span> </h5>
+              </div>
+            </li>
+          @endforeach
 
-            </div>
-          </li>
-          <li class="list-group-item">
-            <div class="d-inline-block mr-2" style="width:30%;">
-              <img src="/images/family1.jpg" alt="..." class="img-thumbnail rounded" style="max-width:80%;">
-            </div>
-            <div class="d-inline-block ">
-                <h5> Name <span class="badge badge-info">1st</span> </h5>
-            </div>
-          </li>
         </ul>
 
         <br>

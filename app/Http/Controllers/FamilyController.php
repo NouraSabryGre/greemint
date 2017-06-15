@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\UserController;
 
-class UserController extends Controller
+class FamilyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,15 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user_id = 2;
+        $user = User::find($user_id);
+        $userArray  = $user->userInfoArray();
+        $familyList = $user->familyInfoArray();
+
+        $passedData['user'] = $userArray;
+        $passedData['family'] = $familyList;
+
+          return view('view.family' , $passedData);
     }
 
     /**
@@ -44,39 +53,10 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-      // $user = \App\User::find($id);
-      // needed data to the view
-      // User info:
-        // name
-        // age
-        // email
-        // mobile
-        // profile pic
-
-      $userArray  = $user->userInfoArray();
-      // family members list
-      $familyList = $user->familyInfoArray();
-
-      // All portfolios
-      $portfolios = $user->portfolios;
-
-
-
-
-
-
-      $passedData['user'] = $userArray;
-      $passedData['family'] = $familyList;
-      $passedData['portfolios'] = $portfolios;
-
-
-        return view('profile' , $passedData);
+        //
     }
-
-
-
 
     /**
      * Show the form for editing the specified resource.
