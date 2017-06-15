@@ -102,3 +102,19 @@ $factory->define(App\Schedule::class, function (Faker\Generator $faker) {
     ];
 
 });
+
+
+$factory->define(App\Place::class, function (Faker\Generator $faker) {
+
+    return [
+      'location' => $faker->url,
+      'address' => $faker->streetAddress,
+      'name' => $faker->company,
+      'mobile' => $faker->e164PhoneNumber,
+      'email' => $faker->email,
+      'website' => $faker->domainName,
+      'rate' => mt_rand (0*10, 10*10) / 10,
+      
+    ];
+
+});
