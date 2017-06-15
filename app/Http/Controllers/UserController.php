@@ -46,7 +46,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-      // $user = \App\User::find($id);
+      $user = \App\User::find($id);
       // needed data to the view
       // User info:
         // name
