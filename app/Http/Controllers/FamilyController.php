@@ -53,9 +53,38 @@ class FamilyController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        //
+        $passedData = array();
+        $user = User::find($id);
+        // user info
+        $passedData['user'] = $user->userInfoArray();
+
+        // durgs && // reports
+        $drugs = array();
+        $reports = array();
+        $portfolios = $user->portfolios;
+
+        foreach ($portfolios as  $portfolio)
+        {
+          $prescription = $portfolio->prescription;
+          $report = $portfolio->report;
+          foreach ($prescription->drugs as  $drug)
+          {
+            $drugs[] = $drug;
+          }
+          $reports[] = $report;
+
+        }
+        $passedData['drugs'] = $drugs;
+        $passedData['reports'] = $reports;
+
+        // schedule
+        $passedData['schedule'] = $user->schedule;
+
+
+
+        return view('view.user', $passedData);
     }
 
     /**

@@ -35,9 +35,7 @@ Route::get('/find', 'SearchController@index');
 
 Route::get('view/familymembers', 'FamilyController@index');
 
-Route::get('view/user/{id}', function() {
-  return view('view.user');
-});
+Route::get('view/user/{id}', 'FamilyController@show');
 
 
 Route::get('view/doctor/{id}', function() {

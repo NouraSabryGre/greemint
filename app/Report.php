@@ -14,4 +14,10 @@ class Report extends Model implements DoctorWritable
       return $this->hasOne('App\Portfolio');
   }
 
+
+  public function getDoctorName()
+  {
+    return $this->portfolio->doctor->user->name;
+  }
+
 }
