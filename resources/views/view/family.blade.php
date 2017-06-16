@@ -33,7 +33,7 @@
               </div>
               <div class="d-inline-block">
                   <a href="/view/user/{{$member['id']}}" class="btn btn-link">
-                    <h5 > {{ $member['name']}} <span class="badge badge-info">2nd</span> </h5>
+                    <h5 > {{ $member['name']}} <span class="badge badge-info">{{$member['degree']}}nd</span> </h5>
                   </a>
 
               </div>

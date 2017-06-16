@@ -16,6 +16,7 @@ class FamilyTableSeeder extends Seeder
         DB::table('family_user')->insert([
             'user_id' => rand(1,10) ,
             'family_id' => rand(1,10),
+            'degree' => rand(1,4),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);

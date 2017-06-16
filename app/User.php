@@ -40,7 +40,7 @@ class User extends Authenticatable
 
     public function family()
     {
-      return $this->belongsToMany('App\User', 'family_user', 'user_id', 'family_id');
+      return $this->belongsToMany('App\User', 'family_user', 'user_id', 'family_id')->withPivot('degree');;
     }
 
 
@@ -83,6 +83,7 @@ class User extends Authenticatable
         $familyList[$i] = array(
           'id' =>$familymembers[$i]->id ,
           'name' =>$familymembers[$i]->name ,
+          'degree' => $familymembers[$i]->pivot->degree,
           'profilepic' => "family" . ($i+1) . ".jpg"
         );
       }

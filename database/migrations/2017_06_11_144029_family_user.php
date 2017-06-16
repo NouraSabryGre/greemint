@@ -17,6 +17,7 @@ class FamilyUser extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('family_id');
+            $table->integer('degree');
             $table->timestamps();
         });
     }
