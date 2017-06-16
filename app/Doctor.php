@@ -18,5 +18,16 @@ class Doctor extends User
         return $this->belongsTo('App\User');
     }
 
+    public function userInfoArray() {
+      $userArray  = array(
+        'Name' => $this->user->name ,
+        'Age' => $this->user->age ,
+        'Mobile' => $this->user->mobile ,
+        'Email' => $this->user->email ,
+        'profilepic' => "usersprofilepicture.jpg"
+       );
+       return $userArray;
+    }
+
 
 }

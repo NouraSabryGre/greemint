@@ -38,9 +38,7 @@ Route::get('view/familymembers', 'FamilyController@index');
 Route::get('view/user/{id}', 'FamilyController@show');
 
 
-Route::get('view/doctor/{id}', function() {
-  return view('view.doctor');
-});
+Route::get('view/doctor/{id}', 'DoctorController@show');
 
 
 Route::get('view/place/{id}', function() {

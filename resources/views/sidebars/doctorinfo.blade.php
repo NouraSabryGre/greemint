@@ -3,12 +3,14 @@
     <div class="card" style="width: 20rem;">
 
       <div class="card-block">
-        <h4 class="card-title text-center">Dr Ahmed Maghraby</h4>
+        <h4 class="card-title text-center">{{ $user['Name'] }}</h4>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cras justo odio</li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Vestibulum at eros</li>
+        @foreach($user as $key => $value)
+          @if ($key != "Name" && $key != "profilepic")
+            <li class="list-group-item">{{$key}}: {{$value}}</li>
+          @endif
+        @endforeach
       </ul>
 
     </div>
