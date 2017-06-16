@@ -15,4 +15,15 @@ class Hospital extends Place
         return $this->belongsTo('App\Place');
     }
 
+    /**
+    * Get the Doctors that work in this hospital.
+    */
+    public function doctors()
+    {
+        return $this->belongsToMany('App\Doctor');
+    }
+
+
+
+
 }

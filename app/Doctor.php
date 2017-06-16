@@ -30,4 +30,14 @@ class Doctor extends User
     }
 
 
+
+    /**
+     * The places that doctor work in.
+     */
+    public function hospitals()
+    {
+        return $this->belongsToMany('App\Hospital');
+    }
+
+
 }
