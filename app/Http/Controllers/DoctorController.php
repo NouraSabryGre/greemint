@@ -13,6 +13,11 @@ class DoctorController extends Controller
     $doctor = Doctor::find($id);
 
     $passedData['user'] = $doctor->userInfoArray();
+
+    $passedData['places'] = $doctor->workingPlaces();
+
+    // dd($passedData['places']);
+
     return view('view.doctor' , $passedData);
   }
 }

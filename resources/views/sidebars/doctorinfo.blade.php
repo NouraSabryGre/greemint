@@ -21,9 +21,9 @@
         <h4 class="card-title">Working Places</h4>
       </div>
       <ul class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-        <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-        <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+        @foreach($places as $place)
+          <a href="#" class="list-group-item list-group-item-action">{{ $place->place->name }}</a>
+        @endforeach
       </ul>
     </div>
   </div>

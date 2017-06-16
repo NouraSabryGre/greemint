@@ -53,11 +53,15 @@ class Doctor extends User
      */
      public function workingPlaces()
      {
-       $clinics = $this->clinics;
-       $hospitals = $this->hospitals;
        $places = array();
-       $places[] = $clinics;
-       $places[] = $hospitals;
+       $clinics = $this->clinics;
+       foreach ($clinics as $clinic) {
+         $places[] = $clinic;
+       }
+       $hospitals = $this->hospitals;
+       foreach ($hospitals as $hospital) {
+         $places[] = $hospital;
+       }
        return $places;
      }
 
