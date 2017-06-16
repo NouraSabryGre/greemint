@@ -32,12 +32,35 @@ class Doctor extends User
 
 
     /**
-     * The places that doctor work in.
+     * The hospitals that doctor work in.
      */
     public function hospitals()
     {
         return $this->belongsToMany('App\Hospital');
     }
+
+    /**
+     * The clinics that doctor work in.
+     */
+    public function clinics()
+    {
+        return $this->belongsToMany('App\Clinic');
+    }
+
+
+    /**
+     * All places that doctor work in.
+     */
+     public function workingPlaces()
+     {
+       $clinics = $this->clinics;
+       $hospitals = $this->hospitals;
+       $places = array();
+       $places[] = $clinics;
+       $places[] = $hospitals;
+       return $places;
+     }
+
 
 
 }
