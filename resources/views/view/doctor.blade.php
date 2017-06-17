@@ -71,22 +71,13 @@
         <h4 class="card-title">Your Portfolios</h4>
 
         <ul class="list-group list-group-flush">
+          @foreach($portfolios as $portfolio)
+            <a href="/view/portfolio/{{$portfolio->id}}" class="list-group-item list-group-item-action justify-content-between">
+              {{ $portfolio->report->title }}
+              <span class="badge badge-info badge-pill">{{ $portfolio->report->created_at }}</span>
 
-          <a href="#" class="list-group-item list-group-item-action justify-content-between">
-            Cras justo odio
-            <span class="badge badge-info badge-pill">14/12/2010</span>
-
-          </a>
-          <a href="#" class="list-group-item list-group-item-action justify-content-between">
-            Cras justo odio
-            <span class="badge badge-info badge-pill">14/8/2003</span>
-
-          </a>
-          <a href="#" class="list-group-item list-group-item-action justify-content-between">
-            Cras justo odio
-            <span class="badge badge-info badge-pill">14/9/2014</span>
-
-          </a>
+            </a>
+          @endforeach
 
 
         </ul>

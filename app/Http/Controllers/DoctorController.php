@@ -16,7 +16,9 @@ class DoctorController extends Controller
 
     $passedData['places'] = $doctor->workingPlaces();
 
-    // dd($passedData['places']);
+    // TODO: Get Auth user's id
+    $user = \App\User::find(2);
+    $passedData['portfolios'] = $user->portfoliosOfDoctorWhithID($id);
 
     return view('view.doctor' , $passedData);
   }

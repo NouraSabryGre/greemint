@@ -90,4 +90,20 @@ class User extends Authenticatable
       return $familyList;
     }
 
+
+    public function portfoliosOfDoctorWhithID($id)
+    {
+      $doctor = \App\Doctor::find($id);
+      $allPortfolios = $this->portfolios;
+      $thePortfolios = array();
+      foreach ($allPortfolios as $portfolio)
+      {
+        if ($portfolio->doctor == $doctor)
+        {
+          $thePortfolios[] = $portfolio;
+        }
+      }
+      return $thePortfolios;
+    }
+
 }
