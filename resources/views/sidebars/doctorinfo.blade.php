@@ -22,7 +22,7 @@
       </div>
       <ul class="list-group list-group-flush">
         @foreach($places as $place)
-          <a href="#" class="list-group-item list-group-item-action">{{ $place->place->name }}</a>
+          <a href="/view/place/{{ $place->id }}" class="list-group-item list-group-item-action">{{ $place->place->name }}</a>
         @endforeach
       </ul>
     </div>
