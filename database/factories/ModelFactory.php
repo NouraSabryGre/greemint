@@ -135,3 +135,14 @@ $factory->define(App\Clinic::class, function (Faker\Generator $faker) {
     ];
 
 });
+
+
+$factory->define(App\Code::class, function (Faker\Generator $faker) {
+
+    return [
+      'user_id' => rand(1,10),
+      'code' => uniqid(),
+      'used' => false,
+    ];
+
+});

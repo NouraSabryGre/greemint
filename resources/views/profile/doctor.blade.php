@@ -3,9 +3,6 @@
 @section('title', 'Home')
 
 
-
-
-
 @section('navigation')
    @include('layouts.nav')
 @endsection
