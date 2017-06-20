@@ -22,8 +22,34 @@
     <div class="row mx-2 " >
       <div class="card mt-2 text-right" style="width:100%">
         <h3 class="card-header">
-          <a href="/portfolio/new" class="btn btn-link btn-lg">Add</a>
+          <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">
+            Add
+          </button>
         </h3>
+
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Enter User's ID</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1">@</span>
+                  <input type="text" id="userIDInput" class="form-control" placeholder="User's ID" aria-describedby="basic-addon1">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="viewUser" type="button" class="btn btn-primary">View</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     @foreach($portfolios as $portfolio)
@@ -31,7 +57,7 @@
         <!-- A Feed -->
 
         <div class="card mt-2" style="width:100%">
-          <h3 class="card-header">{{ $portfolio->doctor->user->name }}</h3>
+          <h3 class="card-header">{{ $portfolio->user->name }}</h3>
           <div class="d-inline-block text-right text-info mr-1 mt-1">
             {{ $portfolio->report->created_at }}
           </div>
@@ -130,4 +156,25 @@
     <!-- End Of Feed -->
   </div>
 
+@endsection
+
+@section('customjs')
+  <script type="text/javascript">
+    $(function() {
+
+    });
+
+    $('#viewUser').on('click', function() {
+      var baseURL = window.location.protocol + "//" + window.location.host + "/";
+      var id = $('#userIDInput').val();
+      if (id != "" ) {
+        // send to doctor/view/user
+
+        window.location.href = baseURL + "doctor/view/user/" + id;
+      }else {
+        // error
+      }
+    });
+
+  </script>
 @endsection
