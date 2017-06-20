@@ -37,18 +37,13 @@ class DoctorController extends Controller
 
 
     $passedData['patients'] = $doctor->patients;
+
+    $passedData['portfolios'] = $doctor->portfolios;
+
     return view('profile.doctor' , $passedData);
 
   }
 
 
-  // private function unsetByKeys($keys, $fromArray)
-  // {
-  //   foreach ($keys as $key ) {
-  //     unset($fromArray[$key]);
-  //   }
-  //
-  //   return $fromArray;
-  // }
 
 }

@@ -48,6 +48,14 @@ class Doctor extends User
     }
 
     /**
+     * The clinics that doctor work in.
+     */
+    public function portfolios()
+    {
+        return $this->hasMany('App\Portfolio');
+    }
+
+    /**
      * The patients that under doctor's supervision.
      */
     public function patients()

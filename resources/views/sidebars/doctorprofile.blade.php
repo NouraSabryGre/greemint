@@ -11,7 +11,7 @@
           <ul class="list-group list-group-flush">
             @foreach($user as $key => $value)
               @if ($key != "name" && $key != 'profilepic')
-                <li class="list-group-item">{{$key}}: {{$value}}</li>
+                <li class="list-group-item">{{title_case($key)}}: {{$value}}</li>
               @endif
             @endforeach
           </ul>

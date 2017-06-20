@@ -120,7 +120,7 @@
 
       </div>
     @endforeach
-@endsection
 
 <!-- End Of Feed -->
 </div>
+@endsection
