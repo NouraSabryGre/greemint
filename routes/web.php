@@ -20,6 +20,9 @@ Auth::routes();
 
 Route::get('/user/{id}', 'UserController@show');
 
+Route::get('/doctor/{id}','DoctorController@profile');
+
+
 Route::get('/schedule', 'ScheduleController@index');
 
 

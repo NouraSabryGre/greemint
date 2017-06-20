@@ -22,4 +22,33 @@ class DoctorController extends Controller
 
     return view('view.doctor' , $passedData);
   }
+
+
+  public function profile($id)
+  {
+    $passedData = array();
+    $doctor = Doctor::find($id);
+    $passedData['user'] = $doctor->user['attributes'];
+    $passedData['user'] = $this->unsetByKeys(['id','password','remember_token','created_at','updated_at'],$passedData['user']);
+
+    //TODO:User Profile Picture
+    $passedData['user']['profilepic'] = "usersprofilepicture.jpg";
+
+
+
+    $passedData['patients'] = $doctor->patients;
+    return view('profile.doctor' , $passedData);
+
+  }
+
+
+  private function unsetByKeys($keys, $fromArray)
+  {
+    foreach ($keys as $key ) {
+      unset($fromArray[$key]);
+    }
+
+    return $fromArray;
+  }
+
 }
