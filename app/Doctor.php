@@ -47,6 +47,14 @@ class Doctor extends User
         return $this->belongsToMany('App\Clinic');
     }
 
+    /**
+     * The patients that under doctor's supervision.
+     */
+    public function patients()
+    {
+        return $this->belongsToMany('App\User' , 'doctor_patient', 'doctor_id', 'user_id');
+    }
+
 
     /**
      * All places that doctor work in.
