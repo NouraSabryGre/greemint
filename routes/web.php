@@ -20,7 +20,6 @@ Auth::routes();
 
 Route::get('/user/{id}', 'UserController@show');
 
-Route::get('/doctor/{id}','DoctorController@profile');
 
 
 Route::get('/schedule', 'ScheduleController@index');
@@ -47,3 +46,10 @@ Route::get('view/doctor/{id}', 'DoctorController@show');
 Route::get('view/place/{id}', function() {
   return view('view.place');
 });
+
+
+
+Route::get('/doctor/{id}','DoctorController@profile');
+
+
+Route::get('/doctor/view/user/{code}', 'UserController@showWithCode');

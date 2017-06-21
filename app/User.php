@@ -106,4 +106,29 @@ class User extends Authenticatable
       return $thePortfolios;
     }
 
+
+    public function drugs()
+    {
+      $drugs = array();
+      $portfolios = $this->portfolios;
+      foreach ($portfolios as $portfolio) {
+        $prescription = $portfolio->prescription;
+        foreach ($prescription->drugs as $drug) {
+          $drugs [] = $drug;
+        }
+      }
+      return $drugs;
+    }
+
+
+    public function reports()
+    {
+      $reports = array();
+      foreach ($this->portfolios as $portfolio)
+      {
+        $reports[] = $portfolio->report;
+      }
+      return $reports;
+    }
+
 }
