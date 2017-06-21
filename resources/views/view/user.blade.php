@@ -20,12 +20,20 @@
 
 @section('content')
 <div class="col">
-
+  @if($is_doctor)
+    <div class="row mx-2 mt-2">
+        <div class="card" style="width:100%;">
+          <div class="card-block text-right">
+            <a href="/portfolio/new" class="btn btn-link">Wirte Report</a>
+          </div>
+        </div>
+    </div>
+  @endif
   <div class="row mx-2 mt-2">
     <div class="card" style="width:100%;">
       <div class="card-block">
         <h4 class="card-title">Doctors Reports</h4>
-        </div>
+      </div>
         <div id="accordion" role="tablist" aria-multiselectable="true">
 
           <ul class="list-group list-group-flush">
@@ -82,7 +90,7 @@
                 <td>@ {{ $item->date }}</td>
               </tr>
             @endforeach
-            
+
           </tbody>
         </table>
       </div>

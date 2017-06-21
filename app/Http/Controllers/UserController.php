@@ -115,14 +115,17 @@ class UserController extends Controller
 
 
     public function showWithCode($code) {
-      $code = \App\Code::select('user_id' , 'used')->where('code' , $code)->first();
+      $code = \App\Code::select('user_id' , 'used' , 'id')->where('code' , $code)->first();
       if ($code->used == 1 )
       {
         return back()->with('error', 'User Code is in-valid');
       }
       else
       {
-        // TODO: Set Code Used in DB
+        $code = \App\Code::find($code->id);
+        $code->used = 1;
+        //TODO: after implementation 
+        // $code->save();
         $passedData = array();
         // view user's profile with option to write portfolios
         $user = \App\User::find($code->user_id);
@@ -131,6 +134,13 @@ class UserController extends Controller
         $passedData['drugs'] = $user->drugs();
         $passedData['reports'] = $user->reports();
         $passedData['schedule'] = $user->schedule;
+        $passedData = array(
+          'user' =>$userArray ,
+          'drugs' =>$user->drugs() ,
+          'reports' =>$user->reports() ,
+          'schedule' =>$user->schedule ,
+          'is_doctor' => true
+        );
 
 
         return view('view.user' , $passedData);

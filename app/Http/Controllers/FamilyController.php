@@ -81,6 +81,8 @@ class FamilyController extends Controller
 
         // schedule
         $passedData['schedule'] = $user->schedule;
+        $passedData['is_doctor'] = false;
+
 
 
 
