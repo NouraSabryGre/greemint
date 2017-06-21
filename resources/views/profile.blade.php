@@ -124,3 +124,23 @@
 <!-- End Of Feed -->
 </div>
 @endsection
+
+
+@section('customjs')
+  <script type="text/javascript">
+    $('#generateCode').on('click', function() {
+
+      var baseURL = window.location.protocol + "//" + window.location.host + "/";
+
+      $.get( "/code/{{kebab_case($user['Name'])}}", function( data ) {
+        data = jQuery.parseJSON(data) ;
+        var code = data.code;
+
+        $('#codeModal .modal-content').text(code);
+
+      });
+
+
+    });
+  </script>
+@endsection

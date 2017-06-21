@@ -53,3 +53,6 @@ Route::get('/doctor/{id}','DoctorController@profile');
 
 
 Route::get('/doctor/view/user/{code}', 'UserController@showWithCode');
+
+
+Route::get('/code/{name}' , 'CodeController@create');

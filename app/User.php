@@ -131,4 +131,16 @@ class User extends Authenticatable
       return $reports;
     }
 
+
+    public function generateNewCode()
+    {
+      $theCode = uniqid();
+      $code = new \App\Code;
+      $code->code = $theCode;
+      $code->user_id = $this->id;
+      $code->used = 0;
+      $code->save();
+      return $theCode;
+    }
+
 }

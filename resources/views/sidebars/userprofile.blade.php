@@ -8,6 +8,16 @@
             <h4 class="card-title text-center"> {{ $user['Name'] }} </h4>
             <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
           </div>
+          <button style="width:60%" id="generateCode" data-target="#codeModal" data-toggle="modal" type="button" class="btn btn-info mx-auto mb-2">My Code</button>
+
+          <div class="modal fade bd-example-modal-sm" id="codeModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                
+              </div>
+            </div>
+          </div>
+
           <ul class="list-group list-group-flush">
             @foreach($user as $key => $value)
               @if ($key != "Name" && $key != "profilepic")
