@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use App\Notifications\DoctorViewProfile;
 
 class UserController extends Controller
 {
@@ -124,11 +125,23 @@ class UserController extends Controller
       {
         $code = \App\Code::find($code->id);
         $code->used = 1;
-        //TODO: after implementation 
+        //TODO: after implementation
         // $code->save();
+
+
+
         $passedData = array();
         // view user's profile with option to write portfolios
         $user = \App\User::find($code->user_id);
+
+
+        // TODO: Notify User
+        // TODO: auth()->id for doctor
+        // create doctor object
+        $id= 2;
+        $doctor = \App\Doctor::find($id);
+        $user->notify(new \App\Notifications\DoctorViewProfile($doctor));
+
         $userArray  = $user->userInfoArray();
         $passedData['user'] = $userArray;
         $passedData['drugs'] = $user->drugs();
