@@ -143,4 +143,15 @@ class User extends Authenticatable
       return $theCode;
     }
 
+
+    public function recieveRequest(Request $request)
+    {
+      if (get_class($request) == "App\DoctorSupervisionRequest")
+      {
+          
+          $this->notify(new \App\Notifications\SupervisionRequest($request));
+      }
+
+    }
+
 }

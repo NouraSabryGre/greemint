@@ -142,11 +142,11 @@ class UserController extends Controller
         $doctor = \App\Doctor::find($id);
         $user->notify(new \App\Notifications\DoctorViewProfile($doctor));
 
+
+        // Send to user a supervision request
+        $doctor->requestSupervisionOn($user);
+
         $userArray  = $user->userInfoArray();
-        $passedData['user'] = $userArray;
-        $passedData['drugs'] = $user->drugs();
-        $passedData['reports'] = $user->reports();
-        $passedData['schedule'] = $user->schedule;
         $passedData = array(
           'user' =>$userArray ,
           'drugs' =>$user->drugs() ,

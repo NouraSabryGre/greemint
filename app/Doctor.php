@@ -81,6 +81,13 @@ class Doctor extends User
        return $places;
      }
 
-
+     public function requestSupervisionOn(User $user)
+     {
+       $request = new \App\DoctorSupervisionRequest ;
+       $request->doctor_id = $this->id;
+       $request->user_id = $user->id;
+       $request->save();
+       $user->recieveRequest($request);
+     }
 
 }
