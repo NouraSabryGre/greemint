@@ -27,6 +27,9 @@
             <label for="exampleTextarea">Your Report</label>
             <textarea name="body" class="form-control" id="exampleTextarea" rows="5"></textarea>
           </div>
+          <div class="form-group">
+            <input style="display:none" readonly type="text" name="user" class="form-control" value="{{ kebab_case($forUser) }}" >
+          </div>
 
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>

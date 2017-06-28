@@ -24,7 +24,7 @@
     <div class="row mx-2 mt-2">
         <div class="card" style="width:100%;">
           <div class="card-block text-right">
-            <a href="/portfolio/new" class="btn btn-link">Wirte Report</a>
+            <a href="/portfolio/new/{{kebab_case($user['Name'])}}" class="btn btn-link">Wirte Report</a>
           </div>
         </div>
     </div>

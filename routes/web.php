@@ -62,7 +62,7 @@ Route::get('/code/{name}' , 'CodeController@create');
 
 
 
-Route::get('/portfolio/new' ,'PortfoiloController@create');
+Route::get('/portfolio/new/{name}' ,'PortfoiloController@create');
 
 
 Route::post('/portfolio/new' ,'PortfoiloController@viewNew');

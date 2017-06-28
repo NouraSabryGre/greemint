@@ -18,7 +18,7 @@ class CreatePortfoliosTable extends Migration
             $table->integer('user_id');
             $table->integer('doctor_id');
             $table->integer('report_id');
-            $table->integer('prescription_id');
+            $table->integer('prescription_id')->nullable();
             $table->timestamps();
         });
     }

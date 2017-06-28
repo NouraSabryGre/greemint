@@ -13,8 +13,12 @@ class PortfoiloController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request, $name)
     {
+      $name =  str_replace("-"," ",$name) ;
+      // Get User
+      $user = \App\User::where('name' , $name)->first();
+
       $passedData = array();
       // TODO: ID from auth()
       $id = 5;
@@ -23,6 +27,7 @@ class PortfoiloController extends Controller
       $passedData = array(
         'user' => unsetByKeys(['id', 'password', 'remember_token', 'created_at', 'updated_at'], $doctor->user['attributes']),
          'patients' => $doctor->patients,
+         'forUser' => $user->name,
       );
 
       $passedData['user']['profilepic'] = "usersprofilepicture.jpg";
@@ -33,10 +38,28 @@ class PortfoiloController extends Controller
 
     public function viewNew(Request $request)
     {
+
+      $userName = $request->user;
+
+      $userName =  str_replace("-"," ",$userName) ;
+      
+      // Get User
+      $user = \App\User::where('name' , $userName)->first();
+
       $report = new \App\Report;
       $report->title = $request->title;
       $report->body = $request->body;
       $report->save();
-      dd($report->id);
+
+      $portfolio = new \App\Portfolio;
+      $portfolio->user_id = $user->id;
+      // TODO: auth()->id
+      $doctorID = 2;
+      $portfolio->doctor_id = $doctorID;
+      $portfolio->report_id = $report->id;
+      $portfolio->save();
+      dd($portfolio->id);
+
+
     }
 }
