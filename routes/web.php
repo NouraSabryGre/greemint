@@ -56,3 +56,10 @@ Route::get('/doctor/view/user/{code}', 'UserController@showWithCode');
 
 
 Route::get('/code/{name}' , 'CodeController@create');
+
+
+
+
+
+
+Route::get('/portfolio/new' ,'PortfoiloController@create');
