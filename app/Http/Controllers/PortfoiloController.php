@@ -7,15 +7,6 @@ use Illuminate\Http\Request;
 
 class PortfoiloController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -40,59 +31,12 @@ class PortfoiloController extends Controller
       return view('create.portfolio', $passedData);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function viewNew(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Portfolio  $portfolio
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Portfolio $portfolio)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Portfolio  $portfolio
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Portfolio $portfolio)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Portfolio  $portfolio
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Portfolio $portfolio)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Portfolio  $portfolio
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Portfolio $portfolio)
-    {
-        //
+      $report = new \App\Report;
+      $report->title = $request->title;
+      $report->body = $request->body;
+      $report->save();
+      dd($report->id);
     }
 }
