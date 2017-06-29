@@ -64,5 +64,12 @@ Route::get('/code/{name}' , 'CodeController@create');
 
 Route::get('/portfolio/new/{name}' ,'PortfoiloController@create');
 
-
 Route::post('/portfolio/new' ,'PortfoiloController@viewNew');
+
+Route::get('/portfolio/{id}/prescription/new' ,'PortfoiloController@newPrescription');
+
+Route::post('/portfolio/{id}/prescription/new' ,'PortfoiloController@storePrescription');
+
+
+
+Route::get('/drug/search/{key}' , 'DrugController@search');

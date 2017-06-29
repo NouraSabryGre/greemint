@@ -17,6 +17,8 @@
   <div class="col-8 mt-2">
     <div class="row mx-2 " >
       <div class="card" style="width:100%;">
+        <h3 class="card-header">Write Report</h3>
+
         <form action="/portfolio/new" method="post" class="px-3 py-2">
           {{ csrf_field() }}
           <div class="form-group">
