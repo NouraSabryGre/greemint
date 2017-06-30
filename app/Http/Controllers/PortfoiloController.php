@@ -154,4 +154,18 @@ class PortfoiloController extends Controller
 
       return redirect('portfolio/view/' . $portfolioID );
     }
+
+
+    public function show($id)
+    {
+
+      $portfolio = Portfolio::find($id);
+      $passedData = array(
+        'portfolio' => $portfolio,
+
+      );
+
+
+      return view('view.portfolio', $passedData);
+    }
 }
