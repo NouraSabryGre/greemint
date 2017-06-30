@@ -29,7 +29,7 @@
       <div class="card" style="width:100%;">
         <h3 class="card-header">Write Prescription</h3>
 
-        <form id="prescription" action="/portfolio/20/prescription/new" method="post" class="px-3 py-2">
+        <form id="prescription" action="/portfolio/{{ $portfolioID }}/prescription/new" method="post" class="px-3 py-2">
           {{ csrf_field() }}
           <div class="input-group">
             <input list="drugs" type="text" id="searchDrugs" class="form-control" placeholder="Search for drug...">

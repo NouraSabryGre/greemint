@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Portfolio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PortfoiloController extends Controller
 {
@@ -21,7 +22,7 @@ class PortfoiloController extends Controller
 
       $passedData = array();
       // TODO: ID from auth()
-      $id = 5;
+      $id = 3;
       $doctor = \App\Doctor::find($id);
 
       $passedData = array(
@@ -54,7 +55,7 @@ class PortfoiloController extends Controller
       $portfolio = new Portfolio;
       $portfolio->user_id = $user->id;
       // TODO: auth()->id
-      $doctorID = 2;
+      $doctorID = 3;
       $portfolio->doctor_id = $doctorID;
       $portfolio->report_id = $report->id;
       $portfolio->save();
@@ -71,6 +72,7 @@ class PortfoiloController extends Controller
         'report' => $portfolio->report,
         'user' => unsetByKeys(['id', 'password', 'remember_token', 'created_at', 'updated_at'], $doctor->user['attributes']),
          'patients' => $doctor->patients,
+         'portfolioID' => $id,
       );
 
       $passedData['user']['profilepic'] = "usersprofilepicture.jpg";
@@ -79,8 +81,9 @@ class PortfoiloController extends Controller
     }
 
 
-    public function storePrescription(Request $request )
+    public function storePrescription(Request $request , $portfolioID)
     {
+
       $drugs = array();
       $numberOfDrugs = $request->numberOfDrugs;
 
@@ -122,8 +125,33 @@ class PortfoiloController extends Controller
           }
         }
         $drugs[] = $drug;
+
       }
-      dd($drugs);
-      // return json_encode($request->all());
+      $prescription = new \App\Prescription;
+      $prescription->save();
+      $prescriptionID = $prescription->id;
+      foreach ($drugs as $drug)
+      {
+        $aDrug = \App\Drug::select('id')->where('name' , $drug['name'])->first();
+        $id  = $aDrug->id;
+        DB::table('drug_prescription')->insert(
+            [
+              'drug_id' => $id,
+              'prescription_id' => $prescriptionID,
+              'repeat' => $drug['select'],
+              'end_date' => $drug['date'],
+              'created_at' => \Carbon\Carbon::now(),
+              'updated_at' => \Carbon\Carbon::now(),
+            ]
+        );
+
+      }
+
+      $portfolio = Portfolio::find($portfolioID);
+      $portfolio->prescription_id = $prescriptionID;
+      $portfolio->save();
+
+
+      return redirect('portfolio/view/' . $portfolioID );
     }
 }
