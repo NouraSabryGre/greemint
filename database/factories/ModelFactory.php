@@ -155,3 +155,28 @@ $factory->define(App\Pharmacy::class, function (Faker\Generator $faker) {
     ];
 
 });
+
+
+
+$factory->define(App\Order::class, function (Faker\Generator $faker) {
+
+    return [
+      'amount' => mt_rand (1*10, 100*10) / 10,
+      'paid' => true,
+      'payment_method_id' => rand(1,2),
+    ];
+
+});
+
+
+$factory->define(App\DrugsOrder::class, function (Faker\Generator $faker) {
+
+    return [
+
+      'order_id' => rand(1,10),
+      'pharmacy_id' => rand(1,5),
+      'arrival' => $faker->date(),
+      
+    ];
+
+});

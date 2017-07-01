@@ -15,6 +15,9 @@ class CreateDrugsOrdersTable extends Migration
     {
         Schema::create('drugs_orders', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('order_id');
+            $table->integer('pharmacy_id');
+            $table->date('arrival');
             $table->timestamps();
         });
     }
