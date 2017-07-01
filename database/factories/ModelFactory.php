@@ -174,7 +174,7 @@ $factory->define(App\DrugsOrder::class, function (Faker\Generator $faker) {
     return [
       'order_id' => rand(1,5),
       'pharmacy_id' => rand(1,5),
-      'arrival' => $faker->date(),
+      'arrival' => $faker->date(),E
     ];
 
 });
