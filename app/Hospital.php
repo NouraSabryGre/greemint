@@ -8,7 +8,7 @@ class Hospital extends Place
 {
     protected $table = 'hospitals';
     /**
-    * Get the place record associated with the Clinic.
+    * Get the place record associated with the hospital.
     */
     public function place()
     {

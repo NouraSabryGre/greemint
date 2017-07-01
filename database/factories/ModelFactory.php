@@ -123,7 +123,7 @@ $factory->define(App\Place::class, function (Faker\Generator $faker) {
 $factory->define(App\Hospital::class, function (Faker\Generator $faker) {
 
     return [
-      'place_id' => rand(1,10)
+      'place_id' => rand(1,5)
     ];
 
 });
@@ -131,7 +131,7 @@ $factory->define(App\Hospital::class, function (Faker\Generator $faker) {
 $factory->define(App\Clinic::class, function (Faker\Generator $faker) {
 
     return [
-      'place_id' => rand(1,10)
+      'place_id' => rand(5,10)
     ];
 
 });
@@ -143,6 +143,15 @@ $factory->define(App\Code::class, function (Faker\Generator $faker) {
       'user_id' => rand(1,10),
       'code' => uniqid(),
       'used' => false,
+    ];
+
+});
+
+
+$factory->define(App\Pharmacy::class, function (Faker\Generator $faker) {
+
+    return [
+      'place_id' => rand(11,15)
     ];
 
 });

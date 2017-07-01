@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class PlacesTableSeeder extends Seeder
+class PharmaciseTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class PlacesTableSeeder extends Seeder
      */
     public function run()
     {
-      factory(App\Place::class, 15)->create()->each(function ($p) {
+      factory(App\Pharmacy::class, 5)->create()->each(function ($p) {
         $p->save();
       });
     }

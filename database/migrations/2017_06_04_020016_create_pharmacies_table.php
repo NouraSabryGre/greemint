@@ -15,6 +15,7 @@ class CreatePharmaciesTable extends Migration
     {
         Schema::create('pharmacies', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('place_id');
             $table->timestamps();
         });
     }
