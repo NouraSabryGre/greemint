@@ -13,4 +13,15 @@ class Drug extends Model
   {
       return $this->belongsToMany('App\Prescription');
   }
+
+  /**
+   * The pharmacy that has this drug.
+   */
+  public function pharmacies()
+  {
+      return $this->belongsToMany('App\Pharmacy')->withPivot('price');
+  }
+
+
+
 }

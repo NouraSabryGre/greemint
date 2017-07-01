@@ -15,4 +15,13 @@ class Pharmacy extends Place
     {
         return $this->belongsTo('App\Place');
     }
+
+
+    /**
+     * The drugs that are in the Pharmacy.
+     */
+    public function drugs()
+    {
+        return $this->belongsToMany('App\Drug')->withPivot('price');
+    }
 }
