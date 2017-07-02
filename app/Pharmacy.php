@@ -24,4 +24,30 @@ class Pharmacy extends Place
     {
         return $this->belongsToMany('App\Drug')->withPivot('price');
     }
+
+
+
+    public function hasDrugs($drugs)
+    {
+
+      foreach ($drugs as $drug)
+      {
+        if ($this->hasDrug($drug) == false)
+        {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    private function hasDrug(Drug $drug)
+    {
+      foreach ($this->drugs as $pharmacyDrug) {
+        if ($drug->id == $pharmacyDrug->id)
+        {
+          return true;
+        }
+      }
+      return false;
+    }
 }
