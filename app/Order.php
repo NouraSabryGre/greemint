@@ -14,4 +14,13 @@ class Order extends Model
       return $this->belongsTo('App\PaymentMethod');
   }
 
+
+  /**
+   * Get the payment_method of the order.
+   */
+  public function user()
+  {
+      return $this->belongsTo('App\User');
+  }
+
 }

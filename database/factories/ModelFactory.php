@@ -164,6 +164,7 @@ $factory->define(App\Order::class, function (Faker\Generator $faker) {
       'amount' => mt_rand (1*10, 100*10) / 10,
       'paid' => true,
       'payment_method_id' => rand(1,2),
+      'user_id' => rand(1,20),
     ];
 
 });

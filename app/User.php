@@ -46,11 +46,20 @@ class User extends Authenticatable
 
 
     /**
-     * Get the comments for the blog post.
+     * Get the portfolios of the user.
      */
     public function portfolios()
     {
         return $this->hasMany('App\Portfolio');
+    }
+
+
+    /**
+     * Get the orders for the user.
+     */
+    public function orders()
+    {
+        return $this->hasMany('App\Order');
     }
 
 
