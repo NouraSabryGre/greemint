@@ -80,3 +80,5 @@ Route::get('/drug/search/{key}' , 'DrugController@search');
 
 
 Route::post('/order/drugs/new', 'DrugsOrderController@store');
+Route::get('/order/drugs/{id}', 'DrugsOrderController@show');
+Route::post('/order/drugs/{id}/checkout', 'DrugsOrderController@update');

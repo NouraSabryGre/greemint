@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DrugsOrder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DrugsOrderController extends Controller
 {
@@ -121,9 +122,14 @@ class DrugsOrderController extends Controller
      * @param  \App\DrugsOrder  $drugsOrder
      * @return \Illuminate\Http\Response
      */
-    public function show(DrugsOrder $drugsOrder)
+    public function show($id)
     {
-        //
+        $drugsOrder = DrugsOrder::find($id);
+        $passedData = array(
+          'theOrder' => $drugsOrder,
+        );
+
+        return view('view.order.drugs.confirm', $passedData);
     }
 
     /**
@@ -144,9 +150,25 @@ class DrugsOrderController extends Controller
      * @param  \App\DrugsOrder  $drugsOrder
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DrugsOrder $drugsOrder)
+    public function update(Request $request, $id)
     {
-        //
+
+        // get payment method ID
+        $paymentID = DB::table('payment_methods')
+        ->select('id')
+        ->where('method', '=', $request->method)
+        ->first()
+        ->id;
+        // assign payment method id
+        $drugsOrder = DrugsOrder::find($id);
+        $order = $drugsOrder->order;
+        $order->payment_method_id = $paymentID;
+        $order->save();
+        // if credit checkout to bank
+        if ($paymentID == 2 )
+        {
+          return redirect('/migs/process/'. $id);
+        }
     }
 
     /**
