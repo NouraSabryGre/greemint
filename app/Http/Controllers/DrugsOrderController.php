@@ -61,11 +61,39 @@ class DrugsOrderController extends Controller
             unset($result[$i]);
           }
         }
+
         // compare prices
-        
+        $prices = array();
+        foreach ($result as $value) {
+          // dd($value);
+          $pharmacy = $value['pharmacy'];
+          $prices[] = [
+            'pharmacy' => $pharmacy,
+            'total' => $pharmacy->calculateTotalPriceFor($orderedDrugs),
+          ];
+        }
+
         // choose best price
+        $pharmacyWithLowestPrice = $this->pharmacyWithLowestPrice($prices);
 
     }
+
+    private function pharmacyWithLowestPrice($prices)
+    {
+      $choosenPhramacy = array(
+        'min' => $prices[0]['total'],
+        'pharmacy' => $prices[0]['pharmacy'],
+      );
+      for ($i=0; $i < count($prices) ; $i++) {
+        if ($prices[$i]['total'] < $choosenPhramacy['min'])
+        {
+          $choosenPhramacy['min'] = $prices[$i]['total'];
+          $choosenPhramacy['pharmacy']  = $prices[$i]['pharmacy'];
+        }
+      }
+      return $choosenPhramacy;
+    }
+
 
     /**
      * Display the specified resource.

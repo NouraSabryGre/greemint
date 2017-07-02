@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Pharmacy extends Place
 {
@@ -49,5 +50,24 @@ class Pharmacy extends Place
         }
       }
       return false;
+    }
+
+
+
+    public function calculateTotalPriceFor($drugs)
+    {
+      $prices = array();
+      foreach ($drugs as $drug) {
+        $prices[] = DB::table('drug_pharmacy')->select('price')->where([
+          ['drug_id', '=', $drug->id],
+          ['pharmacy_id', '=', $this->id],
+        ])->first();
+
+      }
+      $total = 0 ;
+      foreach ($prices as $drug) {
+        $total += $drug->price;
+      }
+      return $total; 
     }
 }
