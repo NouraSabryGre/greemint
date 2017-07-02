@@ -8,25 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class DrugsOrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -132,16 +114,7 @@ class DrugsOrderController extends Controller
         return view('view.order.drugs.confirm', $passedData);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\DrugsOrder  $drugsOrder
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(DrugsOrder $drugsOrder)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -152,6 +125,7 @@ class DrugsOrderController extends Controller
      */
     public function update(Request $request, $id)
     {
+
 
         // get payment method ID
         $paymentID = DB::table('payment_methods')
@@ -171,14 +145,16 @@ class DrugsOrderController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\DrugsOrder  $drugsOrder
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(DrugsOrder $drugsOrder)
+    public function success($id)
     {
-        //
+      $drugsOrder = DrugsOrder::find($id);
+
+      $passedData = array(
+        'theOrder' => $drugsOrder ,
+        'bankMessage' => \App\MIGS::getResultDescription($_GET['ac']),
+        'status' => 1,
+      );
+
+      return view('view.order.drugs.success', $passedData);
     }
 }

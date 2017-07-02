@@ -82,3 +82,10 @@ Route::get('/drug/search/{key}' , 'DrugController@search');
 Route::post('/order/drugs/new', 'DrugsOrderController@store');
 Route::get('/order/drugs/{id}', 'DrugsOrderController@show');
 Route::post('/order/drugs/{id}/checkout', 'DrugsOrderController@update');
+Route::get('/order/drugs/{id}/success', 'DrugsOrderController@success');
+
+
+
+Route::get('/migs/process/{id}/', 'MIGSController@process');
+
+Route::get('/migs/recieve/{id}', 'MIGSController@re');
