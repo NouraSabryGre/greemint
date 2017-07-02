@@ -73,3 +73,10 @@ Route::post('/portfolio/{id}/prescription/new' ,'PortfoiloController@storePrescr
 
 
 Route::get('/drug/search/{key}' , 'DrugController@search');
+
+
+
+
+
+
+Route::post('/order/drugs/new', 'DrugsOrderController@store');

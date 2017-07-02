@@ -45,5 +45,13 @@
 
 
     });
+
+
+    var crsf = '{{ csrf_field() }}';
+
+
   </script>
+
+
+  <script src="/js/order.js" charset="utf-8"></script>
 @endsection

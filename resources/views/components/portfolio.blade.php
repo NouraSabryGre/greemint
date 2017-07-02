@@ -59,7 +59,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <table class="table">
+        <table id="prescriptionTable{{ $portfolio->prescription->id }}" class="table">
           <thead>
             <tr>
               <th>#</th>
@@ -86,7 +86,7 @@
       <div class="modal-footer justify-content-center">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-success">Add to Schedule</button>
-        <button type="button" class="btn btn-primary">Order Drugs</button>
+        <button type="button" id="{{ $portfolio->prescription->id }}" class=" orderDrugsButton btn btn-primary">Order Drugs</button>
       </div>
     </div>
   </div>
