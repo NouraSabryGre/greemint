@@ -61,6 +61,10 @@ class DrugsOrderController extends Controller
             unset($result[$i]);
           }
         }
+        if(count($result) == 0 )
+        {
+            dd('No pharmacy has these all drugs');
+        }
 
         // compare prices
         $prices = array();
@@ -76,6 +80,22 @@ class DrugsOrderController extends Controller
         // choose best price
         $pharmacyWithLowestPrice = $this->pharmacyWithLowestPrice($prices);
 
+
+        $order = new \App\Order;
+        $order->amount = $pharmacyWithLowestPrice['min'];
+        $order->paid = false;
+        $order->save();
+
+
+
+        $drugsOrder = new DrugsOrder;
+        $drugsOrder->order_id = $order->id;
+        $drugsOrder->pharmacy_id = $pharmacyWithLowestPrice['pharmacy']->id;
+        $drugsOrder->save();
+
+
+
+        return redirect('/order/drugs/' . $drugsOrder->id);
     }
 
     private function pharmacyWithLowestPrice($prices)

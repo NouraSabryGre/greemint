@@ -17,7 +17,7 @@ class CreateDrugsOrdersTable extends Migration
             $table->increments('id');
             $table->integer('order_id');
             $table->integer('pharmacy_id');
-            $table->date('arrival');
+            $table->date('arrival')->nullable();
             $table->timestamps();
         });
     }

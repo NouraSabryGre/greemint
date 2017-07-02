@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->double('amount');
             $table->boolean('paid');
-            $table->integer('payment_method_id');
+            $table->integer('payment_method_id')->nullable();
             $table->timestamps();
         });
     }
