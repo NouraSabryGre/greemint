@@ -16,7 +16,7 @@ class Order extends Model
 
 
   /**
-   * Get the payment_method of the order.
+   * Get the user of the order.
    */
   public function user()
   {
